@@ -1,0 +1,22 @@
+<div
+  class="card"
+  style="width: 18rem"
+  *ngIf="userWasFound(); else templateName"
+>
+  <img src="{{ user()?.avatar }}" class="card-img-top" alt="User Avatar" />
+  <div class="card-body">
+    <h5 class="card-title">Name: {{ user()!.first_name }}</h5>
+    <p class="card-text">Id: {{ userId() }}</p>
+    <p class="card-text">Email: {{ user()!.email }}</p>
+  </div>
+</div>
+<div class="mt-2">
+  <button (click)="loadUser(userId() - 1)" class="btn btn-primary">Back</button>
+  &nbsp;
+  <button (click)="loadUser(userId() + 1)" class="btn btn-primary">Next</button>
+</div>
+<ng-template #templateName>
+  <div class="card-body">
+    <h5 class="card-title">User not found</h5>
+  </div>
+</ng-template>

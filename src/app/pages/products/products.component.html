@@ -1,0 +1,28 @@
+<div class="px-5 py-2">
+  <h1>Add Product</h1>
+  <hr />
+
+  <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" />
+    </div>
+    <div class="m-2">
+      <span setError [customLabel]="color" [error]="myForm.get('name')?.errors"
+        >Temporal</span
+      >
+    </div>
+
+    <button type="button" class="btn btn-primary mx-2" (click)="changeColor()">
+      Change Color
+    </button>
+    <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">
+      Submit
+    </button>
+  </form>
+
+  <pre class="mt-5">
+    {{ myForm.get("name")?.errors | json }}
+  </pre>
+  <p>Color: {{ color }}</p>
+</div>
